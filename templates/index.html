@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ford Dashboard</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="../static/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/assets/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- /Global stylesheets -->
+
+</head>
+
+<body>
+
+    <!-- Main navbar -->
+    <div class="navbar navbar-expand-md navbar-light navbar-static">
+        <div class="navbar-brand">
+            <a href="index.html" class="d-inline-block">
+                <img src="../static/global_assets/images/logo_light.png" alt="">
+            </a>
+        </div>
+
+        <div class="d-md-none">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+				<i class="icon-tree5"></i>
+			</button>
+            <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+				<i class="icon-paragraph-justify3"></i>
+			</button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+                        <i class="icon-paragraph-justify3"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <span class="badge bg-success my-3 my-md-0 ml-md-3 mr-md-auto"><b>Online</b></span>
+
+            <ul class="navbar-nav">
+
+                <li class="nav-item dropdown dropdown-user">
+                    <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+                        <img src="../static/global_assets/images/placeholders/placeholder.jpg" class="rounded-circle mr-2" height="34" alt="">
+                        <span>Sudhanva Hebbale</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
+                        <a href="#" class="dropdown-item"><i class="icon-coins"></i> My balance</a>
+                        <a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-blue ml-auto">58</span></a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
+                        <a href="#" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /main navbar -->
+
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header border-bottom-0">
+                <div class="page-header-content header-elements-md-inline">
+                    <div class="page-title d-flex">
+                        <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> - Dashboard</h4>
+                        <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /page header -->
+
+            <!-- Content area -->
+
+            <div class="content pt-0">
+
+                <div class="bg-dark rounded p-3 mb-3">
+                    <div class="navbar navbar-expand-xl navbar-dark navbar-component rounded-top mb-0">
+
+                        <div class="d-xl-none">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-demo-dark">
+								<i class="icon-menu"></i>
+							</button>
+                        </div>
+
+                        <div class="navbar-collapse collapse" id="navbar-demo-dark">
+                            <ul id="tabbed_navigation" class="nav navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a href="#tab-dark-1" class="navbar-nav-link active" data-toggle="tab">
+                                        <i class="icon-cube3 mr-2"></i> Charts &nbsp; &nbsp;
+                                        <button type="button" class="close" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+                                    </a>
+
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a href="#tab-dark-2" class="navbar-nav-link" data-toggle="tab">
+                                        <i class="icon-puzzle4 mr-2"></i> Maps &nbsp; &nbsp;
+                                        <button type="button" class="close" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="tab_contents" class="card card-body border-top-0 rounded-0 rounded-bottom tab-content mb-0">
+                        <div class="tab-pane fade active show" id="tab-dark-1">
+                            <div class="col-xl-12">
+                                <div class="row">
+                                    <div class="col-xl-2" id="chart_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Chart Type..." id="chart_type" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option value="yearly_chart">Yearly Comparison</option>
+                                                <option value="monthly_trend">Month-wise Trend</option>
+                                                <!--<option value="year_difference">Yearly Differences</option>-->
+                                                <option value="correlations">Correlations</option>
+                                                <option value="rankings"> Delay Ranks </option>
+                                                <option value="carriers"> Carrier Info </option>
+                                                <option value="airport"> Airport Info </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="rank_options_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Rank..." id="rank_options" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option value="top">Top </option>
+                                                <option value="bottom"> Bottom </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="carrier_options_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Rank..." id="carrier_options" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option value="top">Top</option>
+                                                <option value="bottom">Bottom</option>
+                                                <option value="all-d">All- Descending</option>
+                                                <option value="all-a">All- Ascending</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="airport_options_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Rank..." id="airport_options" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option value="top">Top</option>
+                                                <option value="bottom">Bottom</option>
+                                                <option value="all-d">All- Descending</option>
+                                                <option value="all-a">All- Ascending</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="n-val_carriers">
+                                        <input type="text" id="n_value_carriers" class="form-control" placeholder="N - Value">
+                                    </div>
+
+                                    <div class="col-xl-2" id="n-val_airports">
+                                        <input type="text" id="n_value_airports" class="form-control" placeholder="N - Value">
+                                    </div>
+
+                                    <div class="col-xl-2" id="weather_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Year..." id="weather_year" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option value="2003">2003</option>
+                                                <option value="2004">2004</option>
+                                                <option value="2005">2005</option>
+                                                <option value="2006">2006</option>
+                                                <option value="2007">2007</option>
+                                                <option value="2008">2008</option>
+                                                <option value="2009">2009</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2016">2016</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="month_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Month..." id="month" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option value="Jan"> January </option>
+                                                <option value="Feb"> February </option>
+                                                <option value="Mar"> March </option>
+                                                <option value="Apr"> April </option>
+                                                <option value="May"> May </option>
+                                                <option value="Jun"> June </option>
+                                                <option value="Jul"> July </option>
+                                                <option value="Aug"> August </option>
+                                                <option value="Sep"> September </option>
+                                                <option value="Oct"> October </option>
+                                                <option value="Nov"> November </option>
+                                                <option value="Dec"> December </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="month_data_corr">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Month..." id="month_corr" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option value="Jan"> January </option>
+                                                <option value="Feb"> February </option>
+                                                <option value="Mar"> March </option>
+                                                <option value="Apr"> April </option>
+                                                <option value="May"> May </option>
+                                                <option value="Jun"> June </option>
+                                                <option value="Jul"> July </option>
+                                                <option value="Aug"> August </option>
+                                                <option value="Sep"> September </option>
+                                                <option value="Oct"> October </option>
+                                                <option value="Nov"> November </option>
+                                                <option value="Dec"> December </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="city_1_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select City 1..." id="city_1" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option>Phoenix, AZ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="city_2_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select City 2..." id="city_2" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option>Los Angeles, CA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="city_corr_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select City..." id="city_corr" class="form-control select" data-fouc>
+                                                <option></option>
+                                                <option>Phoenix, AZ</option>
+                                                <option>Detroit, MI</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2" id="statistics_data">
+                                        <div class="form-group">
+                                            <select data-placeholder="Statistics Types..." class="form-control select" id="statistics" data-fouc>
+                                                    <option></option>
+                                                    <option value="" disabled selected></option>
+                                                    <option value="# of Delays"># of Delays</option>
+                                                    <option value="Flights">Flights</option>
+                                                    <option value="Minutes Delayed">Minutes Delayed</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2" id="sub_category_data" style="display: none;">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Category..." class="form-control select" id="sub_category" data-fouc>
+                                                    <option value="# of Delays" selected> Select Delay... </option>
+                                                    <option value="# of Delays">Carrier</option>
+                                                    <option value="# of Delays">Late Aircraft</option>
+                                                    <option value="# of Delays">National Aviation System</option>
+                                                    <option value="# of Delays">Security</option>
+                                                    <option value="# of Delays">Weather</option>
+
+                                                    <option value="Flights" selected>Select Flights...</option>
+                                                    <option value="Flights">Cancelled</option>
+                                                    <option value="Flights">Delayed</option>
+                                                    <option value="Flights">Diverted</option>
+                                                    <option value="Flights">On Time</option>
+                                                    <option value="Flights">Total</option>
+
+                                                    <option value="Minutes Delayed" selected>Select Minutes...</option>
+                                                    <option value="Minutes Delayed">Carrier</option>
+                                                    <option value="Minutes Delayed">Late Aircraft</option>
+                                                    <option value="Minutes Delayed">National Aviation System</option>
+                                                    <option value="Minutes Delayed">Security</option>
+                                                    <option value="Minutes Delayed">Weather</option>
+                                                    <option value="Minutes Delayed">Total</option>
+                                                </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-1" id="statistics_data_1">
+                                        <div class="form-group">
+                                            <select data-placeholder="Statistics Types..." class="form-control select" id="statistics_1" data-fouc>
+                                                    <option></option>
+                                                    <option value="" disabled selected></option>
+                                                    <option value="# of Delays"># of Delays</option>
+                                                    <option value="Flights">Flights</option>
+                                                    <option value="Minutes Delayed">Minutes Delayed</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2" id="sub_category_data_1" style="display: none">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Category..." class="form-control select" id="sub_category_1" data-fouc>
+                                                    <option value="# of Delays" selected> Select Delay... </option>
+                                                    <option value="# of Delays">Carrier</option>
+                                                    <option value="# of Delays">Late Aircraft</option>
+                                                    <option value="# of Delays">National Aviation System</option>
+                                                    <option value="# of Delays">Security</option>
+                                                    <option value="# of Delays">Weather</option>
+
+                                                    <option value="Flights" selected>Select Flights...</option>
+                                                    <option value="Flights">Cancelled</option>
+                                                    <option value="Flights">Delayed</option>
+                                                    <option value="Flights">Diverted</option>
+                                                    <option value="Flights">On Time</option>
+                                                    <option value="Flights">Total</option>
+
+                                                    <option value="Minutes Delayed" selected>Select Minutes...</option>
+                                                    <option value="Minutes Delayed">Carrier</option>
+                                                    <option value="Minutes Delayed">Late Aircraft</option>
+                                                    <option value="Minutes Delayed">National Aviation System</option>
+                                                    <option value="Minutes Delayed">Security</option>
+                                                    <option value="Minutes Delayed">Weather</option>
+                                                    <option value="Minutes Delayed">Total</option>
+                                                </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-1" id="statistics_data_2">
+                                        <div class="form-group">
+                                            <select data-placeholder="Statistics Types..." class="form-control select" id="statistics_2" data-fouc>
+                                                    <option></option>
+                                                    <option value="" disabled selected></option>
+                                                    <option value="# of Delays"># of Delays</option>
+                                                    <option value="Flights">Flights</option>
+                                                    <option value="Minutes Delayed">Minutes Delayed</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2" id="sub_category_data_2" style="display: none;">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Category..." class="form-control select" id="sub_category_2" data-fouc>
+                                                    <option value="# of Delays" selected> Select Delay... </option>
+                                                    <option value="# of Delays">Carrier</option>
+                                                    <option value="# of Delays">Late Aircraft</option>
+                                                    <option value="# of Delays">National Aviation System</option>
+                                                    <option value="# of Delays">Security</option>
+                                                    <option value="# of Delays">Weather</option>
+
+                                                    <option value="Flights" selected>Select Flights...</option>
+                                                    <option value="Flights">Cancelled</option>
+                                                    <option value="Flights">Delayed</option>
+                                                    <option value="Flights">Diverted</option>
+                                                    <option value="Flights">On Time</option>
+                                                    <option value="Flights">Total</option>
+
+                                                    <option value="Minutes Delayed" selected>Select Minutes...</option>
+                                                    <option value="Minutes Delayed">Carrier</option>
+                                                    <option value="Minutes Delayed">Late Aircraft</option>
+                                                    <option value="Minutes Delayed">National Aviation System</option>
+                                                    <option value="Minutes Delayed">Security</option>
+                                                    <option value="Minutes Delayed">Weather</option>
+                                                    <option value="Minutes Delayed">Total</option>
+                                                </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-xl-1" id="statistics_data_3">
+                                        <div class="form-group">
+                                            <select data-placeholder="Statistics Types..." class="form-control select" id="statistics_3" data-fouc>
+                                                    <option></option>
+                                                    <option value="" disabled selected></option>
+                                                    <option value="# of Delays"># of Delays</option>
+                                                    <option value="Flights">Flights</option>
+                                                    <option value="Minutes Delayed">Minutes Delayed</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2" id="sub_category_data_3" style="display: none;">
+                                        <div class="form-group">
+                                            <select data-placeholder="Select Category..." class="form-control select" id="sub_category_3" data-fouc>
+                                                    <option value="# of Delays" selected> Select Delay... </option>
+                                                    <option value="# of Delays">Carrier</option>
+                                                    <option value="# of Delays">Late Aircraft</option>
+                                                    <option value="# of Delays">National Aviation System</option>
+                                                    <option value="# of Delays">Security</option>
+                                                    <option value="# of Delays">Weather</option>
+
+                                                    <option value="Flights" selected>Select Flights...</option>
+                                                    <option value="Flights">Cancelled</option>
+                                                    <option value="Flights">Delayed</option>
+                                                    <option value="Flights">Diverted</option>
+                                                    <option value="Flights">On Time</option>
+                                                    <option value="Flights">Total</option>
+
+                                                    <option value="Minutes Delayed" selected>Select Minutes...</option>
+                                                    <option value="Minutes Delayed">Carrier</option>
+                                                    <option value="Minutes Delayed">Late Aircraft</option>
+                                                    <option value="Minutes Delayed">National Aviation System</option>
+                                                    <option value="Minutes Delayed">Security</option>
+                                                    <option value="Minutes Delayed">Weather</option>
+                                                    <option value="Minutes Delayed">Total</option>
+                                                </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-xl-1">
+                                        <button type="button" class="btn btn-primary" id="show_yearly_delays">Go</button>
+                                        <button type="button" class="btn btn-primary" id="show_monthly_delays">Go</button>
+                                        <button type="button" class="btn btn-primary" id="show_correlations">Go</button>
+                                        <button type="button" class="btn btn-primary" id="show_ranks">Go</button>
+                                        <button type="button" class="btn btn-primary" id="show_carriers">Go</button>
+                                        <button type="button" class="btn btn-primary" id="show_airports">Go</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <div class="chart has-fixed-height" id="columns_basic"></div>
+                                    <div class="chart has-fixed-height" id="column_basic"></div>
+                                    <div class="chart has-fixed-height" id="column_basic_month"></div>
+                                    <div class="chart has-fixed-height" id="column_basic_year"></div>
+                                    <div class="chart has-fixed-height" id="area_multiple_correlation"></div>
+                                    <div class="chart has-fixed-height" id="area_multiple_year"></div>
+                                    <div class="chart has-fixed-height" id="bars_basic"></div>
+                                    <div class="chart has-fixed-height" id="bars_basic_carrier"></div>
+                                    <div class="chart has-fixed-height" id="bars_basic_airports"></div>
+                                </div>
+                            </div>
+                            <!-- Basic columns -->
+                        </div>
+                        <!--
+                            <div class="tab-pane fade show" id="tab-dark-2">
+                                <div id="vmap"></div>
+                            </div>
+                        -->
+                    </div>
+                    <!-- /content area -->
+                </div>
+
+                <!-- /main content -->
+            </div>
+            <!-- /page content -->
+
+            <!-- Core JS files -->
+            <script src="../static/global_assets/js/main/jquery.min.js "></script>
+            <script src="../static/global_assets/js/main/bootstrap.bundle.min.js "></script>
+            <script src="../static/global_assets/js/plugins/loaders/blockui.min.js "></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
+            <!-- /Core JS files -->
+
+
+            <!-- Theme JS files -->
+            <script src="../static/global_assets/js/plugins/tables/datatables/datatables.min.js "></script>
+            <script src="../static/global_assets/js/plugins/tables/datatables/extensions/responsive.min.js "></script>
+            <script src="../static/global_assets/js/plugins/forms/selects/select2.min.js "></script>
+            <script src="../static/global_assets/js/demo_pages/datatables_responsive.js "></script>
+            <script src="../static/assets/js/app.js "></script>
+            <script src="../static/global_assets/js/demo_pages/datatables_api.js "></script>
+            <script src="../static/global_assets/js/plugins/visualization/echarts/echarts.min.js "></script>
+
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/bars/bars_basic.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/bars/basic_carriers.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/bars/bars_airports.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/pies/pie_basic.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/lines/area_stacked.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/lines/area_multiple.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/lines/area_multiple_year.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/lines/area_multiple_correlation.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/bars/columns_basic.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/bars/column_basic.js "></script>
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/lines/correlation_chart.js "></script>
+
+            <script src="../static/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js "></script>
+            <script src="../static/global_assets/js/plugins/extensions/jquery_ui/widgets.min.js "></script>
+            <script src="../static/global_assets/js/plugins/extensions/jquery_ui/effects.min.js "></script>
+            <script src="../static/global_assets/js/plugins/extensions/mousewheel.min.js "></script>
+            <script src="../static/global_assets/js/plugins/extensions/jquery_ui/globalize/globalize.js "></script>
+            <script src="../static/global_assets/js/plugins/extensions/jquery_ui/globalize/cultures/globalize.culture.de-DE.js "></script>
+            <script src="../static/global_assets/js/plugins/extensions/jquery_ui/globalize/cultures/globalize.culture.ja-JP.js "></script>
+
+            <script src="../static/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js "></script>
+            <script src="../static/global_assets/js/demo_pages/form_select2.js "></script>
+
+            <script src="../static/assets/js/datatables.js "></script>
+            <script src="../static/assets/js/dropdown_change.js "></script>
+            <script src="../static/assets/js/multidimension_charts.js "></script>
+
+            <script src="../static/global_assets/js/plugins/ui/prism.min.js "></script>
+            <script src="../static/global_assets/js/plugins/notifications/bootbox.min.js "></script>
+            <script src="../static/global_assets/js/plugins/forms/selects/select2.min.js "></script>
+            <script src="../static/global_assets/js/demo_pages/components_modals.js "></script>
+
+            <script src="../static/global_assets/js/plugins/forms/styling/uniform.min.js "></script>
+            <script src="../static/global_assets/js/plugins/notifications/pnotify.min.js "></script>
+            <script src="../static/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js "></script>
+            <script src="../static/global_assets/js/demo_pages/form_multiselect.js "></script>
+
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/lines/area_point_values.js "></script>
+
+            <script src="../static/global_assets/js/demo_pages/jqueryui_forms.js "></script>
+
+            <script src="https://www.gstatic.com/charts/loader.js "></script>
+            <!--<script src="../static/global_assets/js/demo_charts/google/dark/bars/histogram.js "></script>-->
+            <script src="../static/global_assets/js/demo_charts/echarts/dark/bars/tornado_staggered.js "></script>
+            <!-- /Theme JS files -->
+            <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Dynamic Weather Dashboard</title>
+
+        <!-- Global stylesheets -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+        <link href="../static/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+        <link href="../static/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+        <link href="../static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../static/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+        <link href="../static/assets/css/layout.min.css" rel="stylesheet" type="text/css">
+        <link href="../static/assets/css/components.min.css" rel="stylesheet" type="text/css">
+        <link href="../static/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+        <link href="../static/assets/css/round_widgets.css" rel="stylesheet" type="text/css">
+        
+        <!-- /Global stylesheets -->
+
+        
+    </head>
+
+    <body>
+        <!-- Main navbar -->
+	<div class="navbar navbar-expand-md navbar-light navbar-static">
+		<div class="navbar-brand">
+			<a href="index.html" class="d-inline-block">
+				<img src="../static/global_assets/images/logo_light.png" alt="">
+			</a>
+		</div>
+
+		<div class="d-md-none">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+				<i class="icon-tree5"></i>
+			</button>
+			<button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+				<i class="icon-paragraph-justify3"></i>
+			</button>
+		</div>
+
+		<div class="collapse navbar-collapse" id="navbar-mobile">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+						<i class="icon-paragraph-justify3"></i>
+					</a>
+				</li>
+			</ul>
+
+			<span class="badge bg-success my-3 my-md-0 ml-md-3 mr-md-auto"><b>Online</b></span>
+
+			<ul class="navbar-nav">
+
+				<li class="nav-item dropdown dropdown-user">
+					<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+						<img src="../static/global_assets/images/placeholders/placeholder.jpg" class="rounded-circle mr-2" height="34" alt="">
+						<span>Sudhanva Hebbale</span>
+					</a>
+
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
+						<a href="#" class="dropdown-item"><i class="icon-coins"></i> My balance</a>
+						<a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-blue ml-auto">58</span></a>
+						<div class="dropdown-divider"></div>
+						<a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
+						<a href="#" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+    <!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Page header -->
+			<div class="page-header border-bottom-0">
+				<div class="page-header-content header-elements-md-inline">
+					<div class="page-title d-flex">
+						<h4><span class="font-weight-semibold">Station Summary</span> - Dashboard</h4>
+						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+					</div>
+
+				</div>
+			</div>
+            <!-- /page header -->
+        
+            <!-- Content area -->
+			<div class="content pt-0">
+				<!-- Main charts -->
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="mb-3 col-xl-2">
+                            <div class="form-group form-group-feedback form-group-feedback-left">
+                                <input type="text" class="form-control" placeholder="Enter City ..." id="city_text">
+                                <div class="form-control-feedback">
+                                    <i class="icon-search4 font-size-base"></i>
+                                </div>
+                            </div>
+                        </div>
+
+							<div class="card-body py-0">
+								<div class="row">
+                                    <div class="col-sm-6 col-xl-3">
+                                        <!-- Tickets stats white -->
+                                        <div class="card text-center">
+                                            <div class="card-body">
+                                                <h6 class="font-weight-semibold mb-0 mt-1">Current Weather:</h6>
+                                                <div id ="city_weather" class="text-muted mb-3"></div>
+                                                <div class="svg-center position-relative mb-1" id="progress_percentage_two"></div>
+                                            </div>
+                
+                                            <div class="card-body border-top-0 pt-0">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div class="text-uppercase font-size-xs text-muted">Max Temp.</div>
+                                                        <h5 id="max_temp" class="font-weight-semibold line-height-1 mt-1 mb-0">0</h5>
+                                                    </div>
+                
+                                                    <div class="col-4">
+                                                        <div class="text-uppercase font-size-xs text-muted">Min Temp.</div>
+                                                        <h5 id="min_temp" class="font-weight-semibold line-height-1 mt-1 mb-0">0</h5>
+                                                    </div>
+                
+                                                    <div class="col-4">
+                                                        <div class="text-uppercase font-size-xs text-muted">Feels Like</div>
+                                                        <h5 id="feels_temp" class="font-weight-semibold line-height-1 mt-1 mb-0">0</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /tickets stats white -->
+                                    </div>
+                                    <div class="col-sm-6 col-xl-3">
+                                        <!-- Segmented gauge -->
+                                        <div class="card card-body text-center">
+                                            <h6 class="font-weight-semibold mb-0 mt-1">Wind Speed</h6>
+
+                                            <div class="svg-center" id="segmented_gauge"></div>
+                                            <br>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="text-uppercase font-size-xs text-muted">Wind Speed</div>
+                                                    <h5 id="wind_speed"  class="font-weight-semibold line-height-1 mt-1 mb-0">0</h5>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="text-uppercase font-size-xs text-muted">Direction</div>
+                                                    <h5 id="wind_direction" class="font-weight-semibold line-height-1 mt-1 mb-0">0</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /segmented gauge -->
+                                    </div>
+
+                                    <div class="col-sm-6 col-xl-6">
+                                        <!-- Segmented gauge -->
+                                        <div class="card card-body text-center">
+                                            <h6 class="font-weight-semibold mb-0 mt-1">Time Section</h6>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="text-uppercase font-size-xs text-muted">Sunrise</div>
+                                                    <div class="row">
+                                                        <div class="col-12 align-self-center">
+                                                            <div class="clock mx-auto">
+                                                                <div class="clock-face">
+                                                                    <div class="pointer pointer-hour_sunrise"></div>
+                                                                    <div class="pointer pointer-minute_sunrise"></div>
+                                                                    <div class="screw"></div>
+                                                                </div>
+                                                            </div>
+                                                
+                                                            <div class="digital row justify-content-center">
+                                                                <div class="col-3 col-md-2 digi"><span id="sunrise_hour">00</span></div>
+                                                                <div class="col-1 digi">:</div>
+                                                                <div class="col-3 col-md-2 digi"><span id="sunrise_minute">00</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="text-uppercase font-size-xs text-muted">Sunset</div>
+                                                    <div class="row">
+                                                        <div class="col-12 align-self-center">
+                                                            <div class="clock mx-auto">
+                                                                <div class="clock-face">
+                                                                    <div class="pointer pointer-hour_sunset"></div>
+                                                                    <div class="pointer pointer-minute_sunset"></div>
+                                                                    <div class="screw"></div>
+                                                                </div>
+                                                            </div>
+                                                
+                                                            <div class="digital row justify-content-center">
+                                                                <div class="col-3 col-md-2 digi"><span id="sunset_hour">00</span></div>
+                                                                <div class="col-1 digi">:</div>
+                                                                <div class="col-3 col-md-2 digi"><span id="sunset_minute">00</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="text-uppercase font-size-xs text-muted">Local Time</div>
+                                                    <div class="row">
+                                                        <div class="col-12 align-self-center">
+                                                            <div class="clock mx-auto">
+                                                                <div class="clock-face">
+                                                                    <div class="pointer pointer-hour"></div>
+                                                                    <div class="pointer pointer-minute"></div>
+                                                                    <div class="pointer pointer-second"></div>
+                                                                    <div class="screw"></div>
+                                                                </div>
+                                                            </div>
+                                                
+                                                            <div class="digital row justify-content-center">
+                                                                <div class="col-3 col-md-2 digi"><span id="hourSpan">00</span></div>
+                                                                <div class="col-1 digi">:</div>
+                                                                <div class="col-3 col-md-2 digi"><span id="minuteSpan">00</span></div>
+                                                                <div class="col-1 digi">:</div>
+                                                                <div class="col-3 col-md-2 digi"><span id="secondSpan">00</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /segmented gauge -->
+                                    </div>
+                                
+                                </div>
+                            </div>              
+						</div>
+						<!-- /traffic sources -->
+                    </div>
+                </div> 
+                <!-- Main charts -->
+				<div class="col-sm-12 col-xl-12">
+                    <!-- Segmented gauge -->
+                    <div class="card card-body text-center">
+                        <h6 class="font-weight-semibold mb-0 mt-1">Weather Graph</h6>
+                        <br>
+						<div class="chart has-fixed-height" id="area_stacked_dynamic"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Core JS files -->
+		<script src="../static/global_assets/js/main/jquery.min.js"></script>
+		<script src="../static/global_assets/js/main/bootstrap.bundle.min.js"></script>
+		<script src="../static/global_assets/js/plugins/loaders/blockui.min.js"></script>
+		<!-- /Core JS files -->
+	
+		<!-- Theme JS files -->
+		<script src="../static/assets/js/app.js"></script>
+		<script src="../static/global_assets/js/plugins/visualization/echarts/echarts.min.js"></script>
+        <script src="../static/global_assets/js/demo_charts/echarts/dark/lines/area_stacked_dynamic.js"></script>
+        <script src="../static/global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+        <script src="../static/global_assets/js/plugins/ui/moment/moment.min.js"></script>
+        <script src="../static/global_assets/js/plugins/pickers/daterangepicker.js"></script>
+        
+        <script src="../static/assets/js/clocks.js"></script>
+        <script src="../static/assets/js/round_widgets.js"></script>
+        <script src="../static/global_assets/js/plugins/visualization/d3/d3.min.js"></script>
+        <script src="../static/global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+        <script src="../static/global_assets/js/demo_pages/widgets_stats.js"></script>
+        <script src="../static/global_assets/js/demo_pages/dashboard.js"></script>
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/streamgraph.js"></script>
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/sparklines.js"></script>
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/lines.js"></script>	
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/areas.js"></script>
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/donuts.js"></script>
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/bars.js"></script>
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/progress.js"></script>
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/heatmaps.js"></script>
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/pies.js"></script>
+        <script src="../static/global_assets/js/demo_charts/pages/dashboard/dark/bullets.js"></script>
+
+        <script src="../static/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+        <script src="../static/global_assets/js/plugins/extensions/jquery_ui/widgets.min.js"></script>
+        <script src="../static/global_assets/js/plugins/extensions/jquery_ui/effects.min.js"></script>
+        <script src="../static/global_assets/js/plugins/extensions/mousewheel.min.js"></script>
+        <script src="../static/global_assets/js/plugins/extensions/jquery_ui/globalize/globalize.js"></script>
+        <script src="../static/global_assets/js/plugins/extensions/jquery_ui/globalize/cultures/globalize.culture.de-DE.js"></script>
+        <script src="../static/global_assets/js/plugins/extensions/jquery_ui/globalize/cultures/globalize.culture.ja-JP.js"></script>
+    
+        <script src="../static/assets/js/app.js"></script>
+        <script src="../static/global_assets/js/demo_pages/jqueryui_forms.js"></script>
+       
+        <!-- /Theme JS files -->
+
+    </body>
+</html>
